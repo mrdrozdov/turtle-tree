@@ -464,19 +464,13 @@ def run(options):
     for i, name in enumerate(prefix):
         tree_key = tree_key_lst[i]
         table = name2table[name]
-        token_table = name2table[prefix[-1]]
 
         for example_id in id_lst:
             data = table[example_id]
 
             # Get tokens.
-            parse = token_table[example_id][tree_key]
-            tokens = flatten_tree(parse)
-
             parse = table[example_id][tree_key]
-            name_tokens = flatten_tree(parse)
-
-            assert len(tokens) == len(name_tokens)
+            tokens = flatten_tree(parse)
 
             # Debug.
             print('tokens = {}'.format(tokens))
